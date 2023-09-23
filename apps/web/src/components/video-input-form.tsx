@@ -10,8 +10,6 @@ import { Button } from './ui/button'
 import { Textarea } from './ui/textarea'
 import { Separator } from './ui/separator'
 
-type Status = 'waiting' | 'converting' | 'uploading' | 'generating' | 'success'
-
 const statusMessages = {
   converting: 'Convertendo...',
   uploading: 'Carregando...',
@@ -19,7 +17,13 @@ const statusMessages = {
   success: 'Finalizado!',
 }
 
-export function VideoInputForm() {
+type Status = 'waiting' | 'converting' | 'uploading' | 'generating' | 'success'
+
+interface VideoInputFormProps {
+  onVideoUploaded: (videoId: string) => void
+}
+
+export function VideoInputForm(props: VideoInputFormProps) {
   const [videoFile, setVideoFile] = useState<File | null>(null)
   const [status, setStatus] = useState<Status>('waiting')
 
@@ -95,6 +99,7 @@ export function VideoInputForm() {
     })
 
     setStatus('success')
+    props.onVideoUploaded(videoId)
   }
 
   const previewURL = useMemo(() => {
