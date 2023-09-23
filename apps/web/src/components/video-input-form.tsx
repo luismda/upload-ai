@@ -37,7 +37,20 @@ export function VideoInputForm(props: VideoInputFormProps) {
     }
 
     const selectedFile = files[0]
+
+    if (!selectedFile) {
+      return
+    }
+
     setVideoFile(selectedFile)
+
+    if (status === 'success') {
+      setStatus('waiting')
+
+      if (promptInputRef.current) {
+        promptInputRef.current.value = ''
+      }
+    }
   }
 
   async function convertVideoToAudio(video: File) {
@@ -110,13 +123,16 @@ export function VideoInputForm(props: VideoInputFormProps) {
     return URL.createObjectURL(videoFile)
   }, [videoFile])
 
-  const isDisabled = status !== 'waiting'
+  const isPromptInputDisabled = status !== 'waiting'
+  const isButtonDisabled = status !== 'waiting' || !videoFile
+  const isVideoInputDisabled = status !== 'waiting' && status !== 'success'
 
   return (
     <form className="space-y-6" onSubmit={handleUploadVideo}>
       <label
+        data-disabled={isVideoInputDisabled}
         htmlFor="video"
-        className="relative border border-dashed flex flex-col items-center justify-center gap-2 rounded-md aspect-video cursor-pointer overflow-hidden text-sm text-muted-foreground hover:bg-primary/5"
+        className="relative border border-dashed flex flex-col items-center justify-center gap-2 rounded-md aspect-video cursor-pointer overflow-hidden text-sm text-muted-foreground hover:bg-primary/5 data-[disabled=true]:cursor-not-allowed"
       >
         {previewURL ? (
           <video
@@ -133,6 +149,7 @@ export function VideoInputForm(props: VideoInputFormProps) {
       </label>
 
       <input
+        disabled={isVideoInputDisabled}
         type="file"
         id="video"
         accept="video/mp4"
@@ -150,13 +167,13 @@ export function VideoInputForm(props: VideoInputFormProps) {
           id="transcription_prompt"
           className="h-20 resize-none leading-relaxed"
           placeholder="Inclua palavras-chave mencionadas no vídeo separadas por vírgula (,)"
-          disabled={isDisabled}
+          disabled={isPromptInputDisabled}
         />
       </div>
 
       <Button
         data-success={status === 'success'}
-        disabled={isDisabled}
+        disabled={isButtonDisabled}
         type="submit"
         className="w-full data-[success=true]:bg-emerald-400"
       >

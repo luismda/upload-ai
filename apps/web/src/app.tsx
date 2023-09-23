@@ -40,6 +40,8 @@ export function App() {
     },
   })
 
+  const isDisabled = !videoId || !input || isLoading
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="px-6 py-3 flex items-center justify-between border-b">
@@ -134,7 +136,7 @@ export function App() {
 
             <Separator />
 
-            <Button disabled={isLoading} type="submit" className="w-full">
+            <Button disabled={isDisabled} type="submit" className="w-full">
               Executar
               <Wand2 className="w-4 h-4 ml-2" />
             </Button>
