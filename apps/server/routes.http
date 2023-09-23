@@ -17,9 +17,21 @@ Content-Type: audio/mpeg
 ###
 
 # @name create-transcription
-POST http://localhost:3333/videos/be9f6efc-c698-47a5-8401-41f991041a76/transcription
+POST http://localhost:3333/videos/cf4eddcc-e8cd-46fc-bcc6-9937668ab30d/transcription
 Content-Type: application/json
 
 {
-  "prompt": "test, audio"
+  "prompt": "storybook, react, front-end"
+}
+
+###
+
+# @name generate-ai-completion
+POST http://localhost:3333/ai/completion
+Content-Type: application/json
+
+{
+  "videoId": "cf4eddcc-e8cd-46fc-bcc6-9937668ab30d",
+  "temperature": 0.5,
+  "template": "Gere um resumo sucinto da transcrição do vídeo informada a seguir: '''{transcription}'''"
 }
