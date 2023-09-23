@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useCompletion } from 'ai/react'
-import { Github, Wand2 } from 'lucide-react'
+import { Wand2 } from 'lucide-react'
 
 import {
   Select,
@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from './components/ui/select'
 
+import { Header } from './components/header'
 import { Label } from './components/ui/label'
 import { Button } from './components/ui/button'
 import { Slider } from './components/ui/slider'
@@ -44,22 +45,7 @@ export function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="px-6 py-3 flex items-center justify-between border-b">
-        <h1 className="text-xl font-bold">upload.ai</h1>
-
-        <div className="flex items-center gap-3">
-          <span className="text-sm text-muted-foreground">
-            Desenvolvido com 💜 no NLW da Rocketseat
-          </span>
-
-          <Separator orientation="vertical" className="h-6" />
-
-          <Button variant="outline">
-            <Github className="w-4 h-4 mr-2" />
-            Github
-          </Button>
-        </div>
-      </header>
+      <Header />
 
       <main className="flex-1 flex items-stretch gap-6 p-6">
         <div className="grid grid-rows-2 flex-1 gap-4">
