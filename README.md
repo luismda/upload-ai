@@ -48,6 +48,10 @@ This project was developed with a **monorepo** architecture using **pnpm workspa
 
 To run this project locally on your machine, you can follow these steps:
 
+Environment:
+- Node.js LTS
+- pnpm
+
 1. Clone this repository:
 
 ```sh
@@ -60,31 +64,31 @@ git clone https://github.com/luismda/upload-ai.git
 pnpm i
 ```
 
-3. Back-end:
+### Back-end:
 
 Access the `apps/server` directory and proceed with the next steps.
 
-3.1. Raise the docker container:
+1. Raise the docker container:
 
 ```sh
 docker compose start -d
 ```
 
-3.2. Create a `.env` file in the root with the same format as `.env.example`. You will need to enter the PostgreSQL connection URL and your OpenAI `API_KEY`, which can be found in the OpenAI API panel.
+2. Create a `.env` file in the root with the same format as `.env.example`. You will need to enter the PostgreSQL connection URL and your OpenAI `API_KEY`, which can be found in the OpenAI API panel.
 
-3.3. Run the migrations to create the tables in the database with Prisma:
+3. Run the migrations to create the tables in the database with Prisma:
 
 ```sh
 pnpm prisma db push
 ```
 
-3.4. Run this command to register some prompts in the database:
+4. Run this command to register some prompts in the database:
 
 ```sh
 pnpm prisma db seed
 ```
 
-3.5. Start the server:
+5. Start the server:
 
 ```sh
 pnpm run dev
@@ -92,17 +96,19 @@ pnpm run dev
 
 You can look up the API routes in the `routes.http` file, which uses the [VSCode Rest Client](https://github.com/Huachao/vscode-restclient) extension.
 
-4. Front-end
+### Front-end
 
 Access the `apps/web` directory and proceed with the next steps.
 
-4.1. Create a `.env` file in the root with the same format as `.env.example`. You will need to provide the base URL for the local API.
+1. Create a `.env` file in the root with the same format as `.env.example`. You will need to provide the base URL for the local API.
 
-4.2. Run the project:
+2. Run the project:
 
 ```sh
 pnpm run dev
 ```
+
+Open the application in the browser and test the features.
 
 ## Created by
 
