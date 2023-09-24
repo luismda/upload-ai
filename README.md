@@ -74,7 +74,7 @@ Access the `apps/server` directory and proceed with the next steps.
 docker compose start -d
 ```
 
-2. Create a `.env` file in the root with the same format as `.env.example`. You will need to enter the PostgreSQL connection URL and your OpenAI `API_KEY`, which can be found in the OpenAI API panel.
+2. Create a `.env` file in the root with the same format as `.env.example`. You will need to enter the PostgreSQL connection URL and your OpenAI `API_KEY`, which can be found in the [OpenAI API panel](https://platform.openai.com/account/api-keys).
 
 3. Run the migrations to create the tables in the database with Prisma:
 
