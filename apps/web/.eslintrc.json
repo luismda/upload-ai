@@ -1,3 +1,3 @@
 {
-  "extends": "@monorepo/eslint-config/react"
+  "extends": "@upload-ai/eslint-config/react"
 }

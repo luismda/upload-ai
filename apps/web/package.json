@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/web",
+  "name": "@upload-ai/web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -29,7 +29,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@monorepo/eslint-config": "workspace:*",
+    "@upload-ai/eslint-config": "workspace:*",
     "@types/node": "^20.6.2",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
